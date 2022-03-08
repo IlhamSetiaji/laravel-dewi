@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Helpers\ResponseFormatter;
 use Illuminate\Support\Facades\Validator;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class AdminController extends Controller
 {
@@ -101,5 +102,11 @@ class AdminController extends Controller
         }
         MasterClass::destroy($masterClassID);
         return ResponseFormatter::success(null,'Data kelas berhasil dihapus');
+    }
+
+    public function generate()
+    {
+        $qrcode = QrCode::size(400)->generate("Koe kok iso gay iku pie dik?");
+        return $qrcode;
     }
 }
