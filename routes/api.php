@@ -28,6 +28,7 @@ Route::middleware('auth:sanctum')->group(function(){
             Route::put('/{masterClassID}/update',[AdminController::class,'updateClass']);
             Route::delete('/{masterClassID}/delete',[AdminController::class,'deleteClass']);
             Route::get('/generate',[AdminController::class,'generate']);
+            Route::get('/location',[AdminController::class,'location']);
         });
     });
     Route::middleware('is.siswa')->group(function(){

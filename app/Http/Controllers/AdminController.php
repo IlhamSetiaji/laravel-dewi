@@ -5,9 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\MasterClass;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Torann\GeoIP\Facades\GeoIP;
 use App\Helpers\ResponseFormatter;
 use Illuminate\Support\Facades\Validator;
+use SimpleSoftwareIO\QrCode\DataTypes\Geo;
+use Stevebauman\Location\Facades\Location;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Illuminate\Support\Facades\Request as FacadesRequest;
 
 class AdminController extends Controller
 {
@@ -108,5 +112,12 @@ class AdminController extends Controller
     {
         $qrcode = QrCode::size(400)->generate("Koe kok iso gay iku pie dik?");
         return $qrcode;
+    }
+
+    public function location()
+    {
+        $ip = '114.142.168.28';
+        $data = Location::get($ip);
+        return $data;
     }
 }
